@@ -1,0 +1,5 @@
+John - CEO
+Aziz - CTO
+Ali - Product manager
+Jack Ma - Developer
+Jim - Tester
