@@ -9,6 +9,7 @@ def right(i):
 def parent(i):
     return i // 2
 
+
 # Max heapify i'th node from heap tree:
 # 1) Take two child nodes: left and right
 # 2) Compare left and right with their parent node
@@ -28,6 +29,7 @@ def max_heapify(A, i):
         A[i - 1], A[largest - 1] = A[largest - 1], A[i - 1]
         max_heapify(A, largest)
 
+
 # Build max heap:
 # Do max_heapify for all nodes starting from n / 2 to 1,
 # Nodes at n / 2 .. n are leaves, no need to max heapify
@@ -40,10 +42,11 @@ def build_max_heap(A):
 
 # Heap sort:
 # 1) Build heap tree from the input array
-# 2) Replace the root node(max) with the last node
-# 3) Detach the last node from heap tree
-# 4) Do max_heapify for node 1
-# 5) Keep doing 2nd, 3rd and 4th until the heap tree is empty
+# 2) Find the max element (always the root node!)
+# 3) Replace the root node(max) with the last node
+# 4) Now the max element is at the end of the array, discard the last node from heap tree
+# 5) The root node may violate max heap property, do max_heapify for node 1
+# 6) Keep doing 2nd, 3rd, 4th and 5th until the heap tree is empty
 def heap_sort(A):
     answer = []
     A = build_max_heap(A)
