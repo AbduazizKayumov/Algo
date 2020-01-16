@@ -36,9 +36,10 @@ def dijkstra(vertices, edges, start):
     while queue:
         u = extract_min(queue, distance)
         paths.append((u, distance[u]))
-        for n in adj[u]:
-            if distance[u] + edges[(u, n)] < distance[n]:
-                distance[n] = distance[u] + edges[(u, n)]
+        for v in adj[u]:
+            w = edges[(u, v)]
+            if distance[u] + w < distance[v]:
+                distance[v] = distance[u] + w
 
     paths.sort()
     return paths
@@ -47,7 +48,7 @@ def dijkstra(vertices, edges, start):
 # Graph:
 #        _B-------D
 #      /` |       |
-#   A-|   |       |
+#    A<   |       |
 #      \_ |       |
 #        `C-------E
 
@@ -62,6 +63,6 @@ edges = {('A', 'B'): 10,
          ('D', 'E'): 7,
          ('E', 'D'): 9}
 
-# find shortes paths from 'A' to all other nodes
+# find shortest paths from 'A' to all other nodes
 shortest_paths = dijkstra(vertices, edges, 'A')
 print(shortest_paths)
