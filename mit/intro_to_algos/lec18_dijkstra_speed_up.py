@@ -1,14 +1,6 @@
 from math import inf
 
 
-# Dijkstra Algorithm to find shortest path
-#
-# 1) Assign zero to starting node and infinity (∞) to all other nodes
-# 2) Add all nodes to non-visited priority queue - Q
-# 3) While Q is not empty:
-#       current_node = extract (remove) min from Q (which is the starting node at first)
-#       set the min dist. to all the neighbors from the current node
-
 def extract_min(Q, distance):
     pos = 0
     for i in range(len(Q)):
@@ -17,14 +9,19 @@ def extract_min(Q, distance):
     return Q.pop(pos)
 
 
-def dijkstra(vertices, edges, start):
+# Speed-up 1
+# Single-source single target graphs
+#       - stop when the target is visited
+def dijkstra(vertices, edges, source, target):
     adj = {}
     distance = {}
     queue = []
+    parent = {}
+
     for vertex in vertices:
         adj[vertex] = set()
         queue.append(vertex)
-        if vertex == start:
+        if vertex == source:
             distance[vertex] = 0
         else:
             distance[vertex] = inf
@@ -34,18 +31,31 @@ def dijkstra(vertices, edges, start):
         adj[e[0]].add(e[1])
         weights[(e[0], e[1])] = e[2]
 
-    paths = []
     while queue:
         u = extract_min(queue, distance)
-        paths.append((u, distance[u]))
+
+        # Speed-up 1
+        if u == target:
+            break
+
         for v in adj[u]:
             w = weights[(u, v)]
             if distance[u] + w < distance[v]:
                 distance[v] = distance[u] + w
+                parent[v] = u
 
-    print("Shortest distances from A:")
-    paths.sort()
-    return paths
+    print("Shortest distance: ", distance[target])
+    print("Shortest path:")
+    path = [target]
+    p = parent[target]
+    while p:
+        path.append(p)
+        if p in parent:
+            p = parent[p]
+        else:
+            p = None
+    path.reverse()
+    print(path)
 
 
 # Graph:
@@ -67,5 +77,4 @@ edges = [['A', 'B', 10],
          ['E', 'D', 9]]
 
 # find shortest paths from 'A' to all other nodes
-shortest_paths = dijkstra(vertices, edges, 'A')
-print(shortest_paths)
+dijkstra(vertices, edges, 'A', 'D')

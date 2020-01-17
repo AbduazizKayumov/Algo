@@ -15,6 +15,9 @@ from math import inf
 # Complexity: O(|V|*|E|)
 # Bellman-Ford vs Dijkstra: Bellman-Ford can work with graphs with negative weights
 # and can detect negative weight cycles
+#
+# After |V| - 1 passes, if we find a distance[v] that can be relaxed, then
+# this means the graph has a negative weight cycle
 
 def bellman_ford(vertices, edges, start):
     adj = {}
