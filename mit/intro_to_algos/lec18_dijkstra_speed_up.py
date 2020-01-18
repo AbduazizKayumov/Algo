@@ -76,5 +76,5 @@ edges = [['A', 'B', 10],
          ['D', 'E', 7],
          ['E', 'D', 9]]
 
-# find shortest paths from 'A' to all other nodes
+# find shortest paths from 'A' to 'D'
 dijkstra(vertices, edges, 'A', 'D')
