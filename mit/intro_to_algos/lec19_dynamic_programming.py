@@ -57,7 +57,7 @@ def shortest_path(adj, w, start, target):
 
 
 # 2) Shortest path with Memoized Dp: effectively DFS + Bellman-Ford
-# - Takes inifinite time if cycles
+# - Takes infinite time if cycles
 # + Works for DAGs (Directed acyclic graphs)
 # + O(V + E) time
 
