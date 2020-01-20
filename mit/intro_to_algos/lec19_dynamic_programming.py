@@ -44,7 +44,7 @@ def fibonacci_bottom_up_dp(n):
 
 
 # Example 2: Shortest path
-# 1) Recursion: terrible solution -> O(N^N)
+# 1) Recursion: terrible solution -> O(V^E)
 def shortest_path(adj, w, start, target):
     if start == target:
         return 0

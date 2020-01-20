@@ -33,7 +33,7 @@ def badness(text, line_width):
     return (total_width - line_width) ** 2
 
 
-def justify(text, start=0, line_width=None, dp=None):
+def justify_dp_recursion(text, start=0, line_width=None, dp=None):
     n = len(text)
 
     if start >= n:
@@ -53,7 +53,7 @@ def justify(text, start=0, line_width=None, dp=None):
 
     minn = inf
     for end in range(start + 1, n + 1):
-        current = badness(text[start:end], line_width) + justify(text, end, line_width, dp)
+        current = badness(text[start:end], line_width) + justify_dp_recursion(text, end, line_width, dp)
         if current < minn:
             minn = current
 
@@ -61,8 +61,32 @@ def justify(text, start=0, line_width=None, dp=None):
     return minn
 
 
+def justify_dp_table(text, start=0, line_width=None):
+    if line_width is None:
+        line_width = len(text[0])
+        for i in range(1, len(text)):
+            if line_width < len(text[i]):
+                line_width = len(text[i])
+    n = len(text)
+    dp = [inf] * (n + 1)
+
+    for start in range(n, -1, -1):
+        if start >= n:
+            dp[start] = 0
+            continue
+
+        minn = inf
+        for end in range(start + 1, n + 1):
+            current = badness(text[start:end], line_width) + dp[end]
+            if current < minn:
+                minn = current
+        dp[start] = minn
+
+    print(dp)
+
+
 text = [
     "blah", "blah", "blah", "blah", "reallylongword"
 ]
-res = justify(text)
+res = justify_dp_recursion(text)
 print(res)  # 50, with greedy approach it gives 100 badness
