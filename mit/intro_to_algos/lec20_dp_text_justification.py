@@ -61,7 +61,7 @@ def justify_dp_recursion(text, start=0, line_width=None, dp=None):
     return minn
 
 
-def justify_dp_table(text, start=0, line_width=None):
+def justify_dp_table(text, line_width=None):
     if line_width is None:
         line_width = len(text[0])
         for i in range(1, len(text)):
@@ -69,6 +69,7 @@ def justify_dp_table(text, start=0, line_width=None):
                 line_width = len(text[i])
     n = len(text)
     dp = [inf] * (n + 1)
+    lines = {}  # parent pointers
 
     for start in range(n, -1, -1):
         if start >= n:
@@ -76,17 +77,28 @@ def justify_dp_table(text, start=0, line_width=None):
             continue
 
         minn = inf
+        line_end = start
         for end in range(start + 1, n + 1):
             current = badness(text[start:end], line_width) + dp[end]
             if current < minn:
                 minn = current
+                line_end = end
         dp[start] = minn
+        lines[start] = line_end
 
     print(dp)
+    i = 0
+    answer = ""
+    while i < len(text):
+        for j in range(i, lines[i]):
+            answer += text[j] + " "
+        answer += "\n"
+        i = lines[i]
+    print(answer)
 
 
 text = [
     "blah", "blah", "blah", "blah", "reallylongword"
 ]
-res = justify_dp_recursion(text)
+res = justify_dp_table(text)
 print(res)  # 50, with greedy approach it gives 100 badness
