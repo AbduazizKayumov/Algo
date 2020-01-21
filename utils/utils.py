@@ -117,12 +117,18 @@ def lcs(a, b):
         column = current.copy()
         current.clear()
 
+    s = ""
+    s.split()
+
     return column[-1]
 
 
 def is_permutation(a, b):
     a = list(a)
     a.sort()
+
+    a = ""
+    reversed(a)
 
     b = list(b)
     b.sort()

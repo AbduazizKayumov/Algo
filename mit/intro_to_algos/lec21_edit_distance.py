@@ -11,7 +11,7 @@ from math import inf
 def lcs(x, y):
     dp = [0] * (len(x) + 1)
 
-    for i in range(len(y) + 1):
+    for i in range(1, len(y) + 1):
 
         column = [0] * (len(x) + 1)
 
