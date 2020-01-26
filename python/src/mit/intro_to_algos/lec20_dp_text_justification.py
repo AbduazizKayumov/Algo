@@ -15,8 +15,8 @@ from math import inf
 # - obvious solution: put as many words that fit on first line, repeat
 #   but this can make very bad lines:
 #   BAD (100 badness)                           GOOD(50)
-# blah blah blah                           blah_blah       <--5 empty - 5^2
-# blah            <---10 empty - 10^2      blah_blah       <--5 empty - 5^2
+# blah blah blah                           blah blah       <--5 empty - 5^2
+# blah            <---10 empty - 10^2      blah blah       <--5 empty - 5^2
 # reallylongword                           reallylongword
 
 def badness(text, line_width):

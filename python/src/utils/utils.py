@@ -7,6 +7,7 @@ def insertion_sort(list):
                 list[j - 1] = key
             else:
                 break
+
     return list
 
 
@@ -136,3 +137,34 @@ def is_permutation(a, b):
     if a == b:
         return True
     return False
+
+
+def generate(n, s="", open=0, closed=0):
+    if closed > open:
+        # ()) -> open < closed -> INVALID
+        return
+
+    if len(s) == 2 * n:
+        print(s)
+        return
+
+    if open < n:
+        generate(n, s + "(", open + 1, closed)
+
+    if closed < open:
+        generate(n, s + ")", open, closed + 1)
+
+
+def solve(arr):
+    b = 0
+    for i in range(len(arr)):
+        if arr[i] != 0:
+            if arr[b] == 0:
+                arr[i], arr[b] = arr[b], arr[i]
+            b += 1
+
+    a = ""
+    a.strip()
+    print(arr)
+
+solve([0, 0, 0, 1, 3, 4])
