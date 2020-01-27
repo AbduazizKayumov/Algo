@@ -87,6 +87,7 @@ def compatible(x, intervals):
     return answer
 
 
+# O(N^2)
 def schedule(intervals, dp=None):
     if not intervals:
         return 0
@@ -109,6 +110,14 @@ def schedule(intervals, dp=None):
     return _max
 
 
+# sort before
+# O(NlogN)
+def schedule_divide(intervals):
+    if not intervals:
+        return 0
+    return max(schedule_divide(intervals[1:]), intervals[0][2] + schedule_divide(compatible(intervals[0], intervals)))
+
+
 intervals = [
     [9, 10, 1],
     [10, 11, 1],
@@ -120,5 +129,6 @@ intervals = [
     [11, 12, 1],
     [11, 12, 2]
 ]
-res = schedule(intervals)
+intervals.sort()
+res = schedule_divide(intervals)
 print(res)
