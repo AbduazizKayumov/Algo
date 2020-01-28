@@ -115,6 +115,7 @@ def schedule(intervals, dp=None):
 def schedule_divide(intervals):
     if not intervals:
         return 0
+    #             exclude current            or             include current request
     return max(schedule_divide(intervals[1:]), intervals[0][2] + schedule_divide(compatible(intervals[0], intervals)))
 
 

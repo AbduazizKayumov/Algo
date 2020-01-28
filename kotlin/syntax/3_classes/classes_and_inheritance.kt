@@ -52,7 +52,7 @@ open class Node(val value: Int) {
 
 /*
 * Creating instances of classes
-* Note that Kotlin does not have new keyword
+* Note that Kotlin does not have 'new' keyword
 * */
 val customer = Customer("Aziz")
 
@@ -83,7 +83,7 @@ open class Base(p: Int)
 class Derived(p: Int) : Base(p)
 
 /*
-* If the base class has no primary constructor, each secondary contructor must initialize
+* If the base class has no primary constructor, each secondary constructor must initialize
 * the base type with super() keyword
 * */
 open class View {
@@ -126,7 +126,7 @@ open class Rectangle : Shape() {
 
 /*
 * Overriding properties works the same way as functions
-* You can also override val properties and change it modifier to var, but not vice-versa
+* You can also override val properties and change its modifier to var, but not vice-versa
 * */
 
 /*

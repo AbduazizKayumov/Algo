@@ -43,7 +43,7 @@ class Point:
 
 def height(a, b, x):
     if a == b:
-        return -100
+        return -inf
     slope = (a.y - b.y) / (a.x - b.x)
     c = a.y - slope * a.x
     return x * slope + c
@@ -51,14 +51,13 @@ def height(a, b, x):
 
 def trench(a, b, x):
     if a == b:
-        return 100
+        return inf
     slope = (a.y - b.y) / (a.x - b.x)
     c = a.y - slope * a.x
     return x * slope + c
 
 
 def convex(s):
-    print(*s)
     if len(s) <= 2:
         for i in range(1, len(s)):
             s[i - 1].next = s[i]
@@ -66,7 +65,6 @@ def convex(s):
         s[-1].next = s[0]
         s[0].prev = s[-1]
         return s
-
 
     mid = len(s) // 2
     A = s[:mid]
@@ -79,14 +77,11 @@ def convex(s):
     while height(a.prev, b, x) > height(a, b, x) or height(a, b.next, x) > height(a, b, x):
         if height(a.prev, b, x) > height(a, b, x):
             a = a.prev
-            print("moved to a: ", a)
         else:
             b = b.next
-            print("moved to b: ", b)
 
     a.next = b
     b.prev = a
-    print("upper tangent: " + str(a) + str(b))
 
     while trench(a.prev, b, x) < trench(a, b, x) or trench(a, b.next, x) < trench(a, b, x):
         if trench(a.prev, b, x) < trench(a, b, x):
@@ -103,7 +98,6 @@ def convex(s):
         ans.append(current)
         current = current.next
 
-    print("ans -> ", *ans)
     return ans
 
 
