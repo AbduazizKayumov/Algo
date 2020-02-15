@@ -4,7 +4,7 @@
 # choose such items so that their weight is maximum
 
 def knapsack(items, S, dp=None):
-    if len(items) == 0:
+    if not items:
         return 0
 
     if dp is None:
