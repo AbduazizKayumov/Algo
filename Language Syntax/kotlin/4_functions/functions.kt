@@ -9,7 +9,7 @@ fun sum_ab(a: Int, b: Int): Int {
 // A function with expression body and infered return type
 fun sum_ab_inferred(a: Int, b: Int) = a + b
 
-// A function tha return nothing
+// A function that return nothing
 fun just_print(s: String): Unit {
     println(s)
 }
@@ -28,5 +28,18 @@ fun printSum(a: Int = 0, b: Int = 0) {
 }
 
 // If default value is used, other parameters must be passed with named arguments
-// printSum(b = 23) // a is 0 by default
+printSum(b = 23) // a is 0 by default
 
+open class A{
+    open fun foo(a: Int = 0, b: Int)
+}
+
+// Overriden functions always use the same default parameter as its base method. If parameter with default value,
+class B : A{
+    override fun foo(a: Int, b: Int) {
+        //
+    }
+}
+
+// precedes a parameter without default value, named arguments are used:
+B().foo(b = 10)
