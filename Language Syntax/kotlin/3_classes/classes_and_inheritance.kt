@@ -22,7 +22,7 @@ class PHDStudent(val name: String)
 
 /*
 * The primary constructor cannot contain any code, initializations can be places in init blocks
-* The properties in primary constuctor can be mutable(var) or immutable(val)
+* The properties in primary constructor can be mutable(var) or immutable(val)
 * */
 class MSStudent(val name: String) {
     val grade: Int
