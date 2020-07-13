@@ -2,7 +2,7 @@ import random
 
 
 # Quicksort is a sorting algorithm with the worst-case running time O(n^2)
-# When elements are distinct and with random partition, its expected running time O(nlgn)
+# When elements are distinct and with random partition, its expected running time O(nlogn)
 
 def partition(A, p, r):
     x = A[r]
