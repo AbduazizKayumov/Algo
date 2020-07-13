@@ -38,8 +38,11 @@ def randomized_partition(A, p, r):
 
 # Select ith element from unsorted array
 def randomized_select(A, p, r, i):
-    if i > len(A) or i <= 0:
-        return -1
+    if i > len(A):
+        return max(A)
+
+    if i <= 0:
+        return min(A)
 
     if p == r:
         return A[p]
@@ -54,5 +57,5 @@ def randomized_select(A, p, r, i):
 
 
 A = [10, 3, 15, 5, 6, 21, 1, 9]
-min3 = randomized_select(A, 0, len(A) - 1, 0)
+min3 = randomized_select(A, 0, len(A) - 1, 100)
 print(min3)
