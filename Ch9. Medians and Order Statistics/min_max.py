@@ -7,8 +7,7 @@ def minimum(A):
     _min = A[0]
     for a in A:
         _min = min(a, _min)
-
-    return a
+    return _min
 
 
 def maximum(A):
