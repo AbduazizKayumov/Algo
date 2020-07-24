@@ -9,4 +9,4 @@ class Queue:
         self.arr.append(x)
 
     def dequeue(self):
-        return self.arr.pop()
+        return self.arr.pop(0)

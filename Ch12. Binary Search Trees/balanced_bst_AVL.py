@@ -8,6 +8,8 @@
 # AVL property
 # Each node stores its height
 # For every node, require heights of left & right children to differ by at most 1
+
+
 class Node:
     def __init__(self, key):
         self.key = key
