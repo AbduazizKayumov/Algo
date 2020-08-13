@@ -1,3 +1,9 @@
+# AVL vs Red-Black tree:
+# - AVL provides faster lookups (AVL is more strictly balanced)
+# - Red-Black tree provides faster insertion & removal
+# - AVL stores heights for each node whereas Red-Black tree only stores one bit(color) for each node
+# - Red-Black tree is used to implement map, multimap, multiset, AVL is used in databases (for faster lookups)
+
 BLACK = "B"
 RED = "R"
 
@@ -10,7 +16,12 @@ class Node:
         self.parent = parent
         self.color = BLACK
 
-
+# Properties of Red-black trees
+# 1. Every node is either red or black
+# 2. The root is black
+# 3. Every leaf(NIL) is black
+# 4. If a node is red, then its both children are black
+# 5. For each node, all simple paths from the node to descendant leaves contains the same number of black nodes
 class RBTree:
     def __init__(self):
         self.nil = Node(0)

@@ -5,9 +5,15 @@
 # take O(logn) time
 
 # AVL Trees = Adelson-Velskii & Landis
-# AVL property
-# Each node stores its height
-# For every node, require heights of left & right children to differ by at most 1
+# AVL property:
+#       - each node stores its height
+#       - for every node, require heights of left & right children to differ by at most 1
+#
+# AVL vs Red-Black tree:
+# - AVL provides faster lookups (AVL is more strictly balanced)
+# - Red-Black tree provides faster insertion & removal
+# - AVL stores heights for each node whereas Red-Black tree only stores one bit(color) for each node
+# - Red-Black tree is used to implement map, multimap, multiset, AVL is used in databases (for faster lookups)
 
 
 class Node:
