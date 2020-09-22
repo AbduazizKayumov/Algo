@@ -55,15 +55,29 @@ def parenthesize_dp(A):
         for j in range(n):
             if i == j - 1:
                 continue
-            minn = inf
             for k in range(i + 1, j):
                 cost = A[i] * A[k] * A[j]
                 count = cost + dp[i][k] + dp[k][j]
-                if count < minn:
-                    minn = count
-            dp[i][j] = minn
+                if count < dp[i][j]:
+                    dp[i][j] = count
+    return dp[0][len(A) - 1]
 
-    return dp[0][len(A)-1]
+
+def matrix_chain_order(p):
+    n = len(p)
+    m = [[0] * n for _ in range(n)]
+
+    for l in range(2, n):           # l is the chain length
+        for i in range(n - l):      # for each i 0<=i<n-l
+            j = i + l               # compute optimal solution for a chain with length l
+            m[i][j] = inf           # j = i + l
+            for k in range(i, j):   # by traversing all k between i and j
+                cost = m[i][k] + m[k][j] + p[i] * p[k] * p[j]
+                m[i][j] = min(m[i][j], cost)
+    for d in m:
+        print(d)
+
+    return m[0][n-1]
 
 
 A = [1, 2, 3, 4, 3]
@@ -71,4 +85,7 @@ min_cost = parenthesize(A, 0, len(A) - 1)
 print(min_cost)
 
 min_cost = parenthesize_dp(A)
+print(min_cost)
+
+min_cost = matrix_chain_order(A)
 print(min_cost)
