@@ -79,10 +79,10 @@ def matrix_chain_order(p):
                     s[i][j] = k
     return m, s
 
+
 def print_parens(s, i, j):
     if s[i][j] == 0:
-        return "A" + str(i+1)
-
+        return "A" + str(i + 1)
     else:
         paren = "("
         paren += print_parens(s, i, s[i][j])
@@ -107,5 +107,5 @@ for d in m:
 for d in s:
     print(d)
 
-ans = print_parens(s, 0, len(A)-1)
+ans = print_parens(s, 0, len(A) - 1)
 print(ans)
