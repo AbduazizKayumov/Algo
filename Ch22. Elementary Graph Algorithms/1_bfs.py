@@ -1,3 +1,4 @@
+# Breadth-first search
 # Explore graph level by level from the starting vertex
 def bfs(start, graph):
     visited = set()
